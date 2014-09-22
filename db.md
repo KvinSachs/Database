@@ -8,7 +8,7 @@
 
 ##Instructions SQL
 
-####Create Table
+###Create Table
 
 Sur Unix -> noms de table et noms de base sont sensibles à la casse mais pas les noms de colonnes ou de contraintes ne le sont pas (de base).  
   
@@ -137,3 +137,24 @@ ENGINE = InnoDB;
 
 CREATE INDEX idx_posts_author ON posts ('author' ASC);
 ```
+
+##Manipulation des données
+
+* INSERT [LOW_PRIORITY | HIGH_PRIORITY] [IGNORE] INTO database.ma_table (colonne1, colonne2, ...) VALUES ('valeur1', 3, ...);
+* INSERT INTO post (id_post, title, valeur) VALUES (1, 'monTitre', 2) ON DUPLICATE KEY UPDATE valeur = 2, title = 'monTitre';
+* REPLACE INTO table (colonne1) VALUES ('valeur1');
+* UPDATE database.ma_table SET colonne1 = 'valeur1', colonne2 = valeur2 WHERE id = 4;
+* UPDATE ma_table SET colonne1 = valeur1, colonne2 = valeurs2 LIMIT 0,5
+* UPDATE ma_table SET colonne1 = valeur1, colonne2 = valeurs2 ORDER BY id_post DESC LIMIT 5
+* DELETE [QUICK] FROM ma_table WHERE id_post IN (1,2,3);
+* TRUNCATE ma_table
+* SELECT * FROM posts
+* SELECT id_post, author, title, DATA_FORMAT(post_date, '%d/%m/%Y %H:%i:%s'), EXTRACT(type FROM post_date) FROM posts
+* SELECT id_post, author, title, DATA_FORMAT(post_date, '%d/%m/%Y %H:%i:%s'), EXTRACT(type FROM post_date), UNIX_TIMESTAMP(post_date) FROM posts
+
+Low | High Priority -> Attends que la table soit libre ou bien outrepasse les autres opérations en cours  
+Ignore -> continue l'insert même si il y a des erreurs  
+ON DUPLICATE KEY UPDATE -> au cas ou il y ait déjà une valeur, update la ligne  
+LIMIT 0,5 -> commence à 0 et compte 5  
+QUICK -> ne reconstruit pas l'index (MyISAM only)  
+TRUNCATE -> vide la table (sans la supprimer) (InnoDB garde la structure et les auto_increments la ou ils en etaient);
