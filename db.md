@@ -65,7 +65,7 @@ INDEX : idx_table_champ
 
 
 **Example** :
-```
+``` SQL
 CREATE TABLE status(id_status INT, status VARCHAR,
     PRIMARY KEY (id_status)
 );
@@ -104,7 +104,7 @@ un post peut répondre à un autre post
 
 ----------------------------------------------------
 
-```
+``` SQL
 CREATE TABLE IF NOT EXISTS status (
     id_status INT(9) NOT NULL AUTO_INCREMENT,
     status VARCHAR(30) NOT NULL,
