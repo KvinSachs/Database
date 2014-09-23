@@ -189,7 +189,7 @@ Ajouter une contrainte vers la table statut (creer la table statut)
 
 Ajouter 3 lignes dans posts.
 
-```
+``` SQL
 CREATE TABLE IF NOT EXISTS posts (
     id_post INT(9) NOT NULL AUTO_INCREMENT,
     date DATETIME NOT NULL,
