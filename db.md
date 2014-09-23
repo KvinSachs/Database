@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS status (
 ALTER TABLE posts DROP status;
 ALTER TABLE posts ADD (status_id INT(3) NOT NULL);
 
-ALTER TABLE posts ADD CONSTRAINT fk_status_id FOREIGN KEY (status_id) REFERENCE status (id_status);
+ALTER TABLE posts ADD CONSTRAINT fk_status_id FOREIGN KEY (status_id) REFERENCES status (id_status);
 
 INSERT INTO status (status_name) VALUES ('valider');
 INSERT INTO status (status_name) VALUES ('en cours');
