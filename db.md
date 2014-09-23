@@ -303,6 +303,10 @@ SELECT comment
 FROM comments
 WEHERE id_post = 2 
 AND comment_status = 'valider';
+
+SELECT post
+FROM posts
+WHERE DATE_FORMAT(date_publish, '%Y%m%d') >= '20140101';
 ```
 
 
