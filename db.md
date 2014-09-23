@@ -170,3 +170,86 @@ TRUNCATE -> vide la table (sans la supprimer) (InnoDB garde la structure et les 
 * ALTER TABLE user MODIFY email VARCHAR(110) NOT NULL COMMENT 'mon commentaire';
 * ALTER TABLE user MODIFY email VARCHAR(110) NOT NULL COMMENT 'mon commentaire' FIRST;
 * ALTER TABLE user MODIFY email VARCHAR(110) NOT NULL COMMENT 'mon commentaire' AFTER name;
+* ALTER TABLE user DROP [COLUMN] email;
+* ALTER TABLE user DROP PRIMARY KEY;
+* ALTER TABLE user DROP FOREIGN KEY fk_name_foreign_key;
+* ALTER TABLE user DROP INDEX idx_user_index;
+* ALTER TABLE user ADD CONSTRAINT pk_user_key PRIMARY KEY (id_user);
+
+
+Exercice
+--------
+
+Creer une table post avec 4 colonnes
+id_post, date, content, statut (valider, en cours, non validé)
+
+Rajouter les colonnes autheur, titre (not null), contenu court, catégorie (interview, papier, humeur)
+
+Ajouter une contrainte vers la table statut (creer la table statut)
+
+Ajouter 3 lignes dans posts.
+
+```
+CREATE TABLE IF NOT EXISTS posts (
+    id_post INT(9) NOT NULL AUTO_INCREMENT,
+    date DATETIME NOT NULL,
+    content LONGTEXT,
+    status ENUM('validé', 'en cours', 'non validé'),
+    CONSTRAINT pk_posts PRIMARY KEY (id_post)
+);
+
+ALTER TABLE posts ADD (
+    author VARCHAR(50),
+    title VARCHAR(255) NOT NULL,
+    excerpt TEXT,
+    category ENUM('interview', 'papier', 'humeur')
+);
+
+CREATE TABLE IF NOT EXISTS status (
+    id_status INT(9) NOT NULL AUTO_INCREMENT,
+    status_name VARCHAR(30) NOT NULL,
+    CONSTRAINT pk_status PRIMARY KEY (id_status)
+);
+
+ALTER TABLE posts DROP status;
+ALTER TABLE posts ADD (status_id INT(9) NOT NULL);
+
+ALTER TABLE posts ADD CONSTRAINT fk_status_id FOREIGN KEY (status_id) REFERENCE status (id_status);
+
+INSERT INTO status (status_name) VALUES ('validé');
+INSERT INTO status (status_name) VALUES ('en cours');
+INSERT INTO status (status_name) VALUES ('non validé');
+
+INSERT INTO posts (date, content, status_id, author, title, excerpt, category) VALUES (
+    "1988-04-12 16:00:00",
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore voluptate maxime quaerat beatae, accusantium, repellat molestiae dolor ratione aliquid officia sint, eos hic. Hic iusto debitis, vero a, magnam dolorum?",
+    "1",
+    "val_pinkman",
+    "Where is it?",
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus eos iusto vitae ad delectus voluptatem dolores rerum expedita dicta.",
+    "humeur"
+);
+
+INSERT INTO posts (date, content, status_id, author, title, excerpt, category) VALUES (
+    "2014-04-12 13:00:00",
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore voluptate maxime quaerat beatae, accusantium, repellat molestiae dolor ratione aliquid officia sint, eos hic. Hic iusto debitis, vero a, magnam dolorum?",
+    "2",
+    "wicked_wolf",
+    "It's my birthday",
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus eos iusto vitae ad delectus voluptatem dolores rerum expedita dicta.",
+    "interview"
+);
+
+INSERT INTO posts (date, content, status_id, author, title, excerpt, category) VALUES (
+    "2014-09-23 18:30:00",
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore voluptate maxime quaerat beatae, accusantium, repellat molestiae dolor ratione aliquid officia sint, eos hic. Hic iusto debitis, vero a, magnam dolorum?",
+    "1",
+    "dat_kraken_tho",
+    "Release me!",
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus eos iusto vitae ad delectus voluptatem dolores rerum expedita dicta.",
+    "papier"
+);
+```
+
+
+
