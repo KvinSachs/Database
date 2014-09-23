@@ -181,7 +181,7 @@ Exercice
 --------
 
 Creer une table post avec 4 colonnes
-id_post, date, content, statut (valider, en cours, non validé)
+id_post, date, content, statut (valider, en cours, non valider)
 
 Rajouter les colonnes autheur, titre (not null), contenu court, catégorie (interview, papier, humeur)
 
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS posts (
     id_post INT(9) NOT NULL AUTO_INCREMENT,
     date DATETIME NOT NULL,
     content LONGTEXT,
-    status ENUM('validé', 'en cours', 'non validé'),
+    status ENUM('valider', 'en cours', 'non valider'),
     CONSTRAINT pk_posts PRIMARY KEY (id_post)
 );
 
@@ -216,9 +216,9 @@ ALTER TABLE posts ADD (status_id INT(9) NOT NULL);
 
 ALTER TABLE posts ADD CONSTRAINT fk_status_id FOREIGN KEY (status_id) REFERENCE status (id_status);
 
-INSERT INTO status (status_name) VALUES ('validé');
+INSERT INTO status (status_name) VALUES ('valider');
 INSERT INTO status (status_name) VALUES ('en cours');
-INSERT INTO status (status_name) VALUES ('non validé');
+INSERT INTO status (status_name) VALUES ('non valider');
 
 INSERT INTO posts (date, content, status_id, author, title, excerpt, category) VALUES (
     "1988-04-12 16:00:00",
@@ -243,7 +243,7 @@ INSERT INTO posts (date, content, status_id, author, title, excerpt, category) V
 INSERT INTO posts (date, content, status_id, author, title, excerpt, category) VALUES (
     "2014-09-23 18:30:00",
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore voluptate maxime quaerat beatae, accusantium, repellat molestiae dolor ratione aliquid officia sint, eos hic. Hic iusto debitis, vero a, magnam dolorum?",
-    "1",
+    "3",
     "dat_kraken_tho",
     "Release me!",
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus eos iusto vitae ad delectus voluptatem dolores rerum expedita dicta.",
