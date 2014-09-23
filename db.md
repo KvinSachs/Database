@@ -266,6 +266,10 @@ INSERT INTO posts (date, content, status_id, author, title, excerpt, category) V
 * WHERE author IS [NOT] NULL
 * WHERE author LIKE '%name%'
 * WHERE instruction AND instruction2
+* ORDER BY colonne1 ASC
+* ORDER BY colonne1 DESC, colonne2 DESC
+* LIMIT 10
+* LIMIT [10,]100
 
 Example
 =======
@@ -288,7 +292,10 @@ GROUP BY
 
 SELECT COUNT(*) nombre, category
 FROM posts
-GROUP BY category;
+GROUP BY category
+HAVING COUNT(*) >= 10
+ORDER BY category DESC
+LIMIT 100;
 ```
 
 
