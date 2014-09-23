@@ -286,9 +286,7 @@ LIMIT 5
 SELECT id_post, author, title
 FROM posts p,
 WHERE 1 
-AND author LIKE 'gab%'
-GROUP BY 
-;
+AND author LIKE 'gab%';
 
 SELECT COUNT(*) nombre, category
 FROM posts
