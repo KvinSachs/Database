@@ -158,3 +158,15 @@ ON DUPLICATE KEY UPDATE -> au cas ou il y ait déjà une valeur, update la ligne
 LIMIT 0,5 -> commence à 0 et compte 5  
 QUICK -> ne reconstruit pas l'index (MyISAM only)  
 TRUNCATE -> vide la table (sans la supprimer) (InnoDB garde la structure et les auto_increments la ou ils en etaient);
+
+##Modification des tables
+
+* ALTER TABLE users RENAME TO user;
+* RENAME users TO user;
+* ALTER TABLE users ADD (colonne1 INT(4), colonne2 VARCHAR(10));
+* ALTER TABLE users ADD (colonne1 INT(4), colonne2 VARCHAR(10)) FIRST;
+* ALTER TABLE users ADD (colonne1 INT(4), colonne2 VARCHAR(10)) AFTER nom_colonne;
+* ALTER TABLE user CHANGE user_email email, user_name name;
+* ALTER TABLE user MODIFY email VARCHAR(110) NOT NULL COMMENT 'mon commentaire';
+* ALTER TABLE user MODIFY email VARCHAR(110) NOT NULL COMMENT 'mon commentaire' FIRST;
+* ALTER TABLE user MODIFY email VARCHAR(110) NOT NULL COMMENT 'mon commentaire' AFTER name;
