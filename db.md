@@ -294,7 +294,15 @@ GROUP BY category
 HAVING COUNT(*) >= 10
 ORDER BY category DESC
 LIMIT 100;
-```
 
+SELECT id_user
+FROM user
+WHERE pseudo IS NULL;
+
+SELECT comment
+FROM comments
+WEHERE id_post = 2 
+AND comment_status = 'valider';
+```
 
 
