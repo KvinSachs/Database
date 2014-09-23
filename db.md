@@ -206,19 +206,24 @@ ALTER TABLE posts ADD (
 );
 
 CREATE TABLE IF NOT EXISTS status (
-    id_status INT(9) NOT NULL AUTO_INCREMENT,
+    id_status INT(3) NOT NULL AUTO_INCREMENT,
     status_name VARCHAR(30) NOT NULL,
     CONSTRAINT pk_status PRIMARY KEY (id_status)
 );
 
 ALTER TABLE posts DROP status;
-ALTER TABLE posts ADD (status_id INT(9) NOT NULL);
+ALTER TABLE posts ADD (status_id INT(3) NOT NULL);
 
 ALTER TABLE posts ADD CONSTRAINT fk_status_id FOREIGN KEY (status_id) REFERENCE status (id_status);
 
 INSERT INTO status (status_name) VALUES ('valider');
 INSERT INTO status (status_name) VALUES ('en cours');
 INSERT INTO status (status_name) VALUES ('non valider');
+
+OR
+
+INSERT INTO status (status_name) VALUES ('valider'),('en cours'),('non valider');
+
 
 INSERT INTO posts (date, content, status_id, author, title, excerpt, category) VALUES (
     "1988-04-12 16:00:00",
