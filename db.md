@@ -256,5 +256,40 @@ INSERT INTO posts (date, content, status_id, author, title, excerpt, category) V
 );
 ```
 
+##Select
+
+* SELECT [colonne1, colonne2] FROM table WHERE instruction GROUP BY conlonne1 HAVING instruction ORDER BY colonne1 ASC LIMIT 5
+* SELECT COUNT(*) FROM table
+* SELECT COUNT(*) alias_count, category FROM table
+* WHERE id_post IN (6,7,8,9,10) 
+* WHERE id_post BETWEEN 6 AND 12
+* WHERE author IS [NOT] NULL
+* WHERE author LIKE '%name%'
+* WHERE instruction AND instruction2
+
+Example
+=======
+
+``` SQL
+SELECT [colonne1, colonne2] [*]
+FROM table, post
+WHERE instruction
+GROUP BY colonne1 
+HAVING instruction
+ORDER BY colonne1 ASC || DESC
+LIMIT 5 
+
+SELECT id_post, author, title
+FROM posts p,
+WHERE 1 
+AND author LIKE 'gab%'
+GROUP BY 
+;
+
+SELECT COUNT(*) nombre, category
+FROM posts
+GROUP BY category;
+```
+
 
 
