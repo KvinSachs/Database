@@ -348,11 +348,13 @@ WHERE DATE_FORMAT(date_publish, '%Y%m%d') >= '20140101';
 
 ##Join
 
-![joins](http://i.stack.imgur.com/N1IGZ.jpg)
-
 * JOIN [$table] ON [options]
 * LEFT JOIN
 * RIGHT JOIN
-* FULL OUTER JOIN
+* FULL OUTER JOIN (= UNION)
+* NATURAL -> evite de mettre les conditions (dangerous!!)
+
+![joins](http://i.stack.imgur.com/N1IGZ.jpg@)
+
 
 
