@@ -45,7 +45,7 @@ INDEX : idx_table_champ
     * MEDIUMINT 
     * INT
     * BIGINT
-    * FLOAT
+    * FLOAT(X,Y) -> nombre X dont Y après la virgule
     * DOUBLE
     * INT [UNSIGNED] -> forcément positif [ZERO_FILL] -> rajoute des zéros avant
 * Textes
@@ -308,5 +308,51 @@ SELECT post
 FROM posts
 WHERE DATE_FORMAT(date_publish, '%Y%m%d') >= '20140101';
 ```
+
+##Fonctions SQL
+
+* COUNT($arg) 
+* SUM($arg)
+* AVG($arg) -> Average
+* MAX($arg)
+* MIN($arg)
+* ROUND($arg)
+* CEIL($arg) -> arrondi au superieur
+* FLOOR($arg) -> arrondi à l'inférieur
+* ABS($arg) -> numéro absolu
+* PI()
+* RAND()
+* UPPER($arg)
+* LOWER($arg)
+* LENGTH($arg)
+* CONCAT($arg1, $arg2, [$arg3, ...])
+* TRIM($arg)
+* LOCATE($arg)
+* SUBSTRING($arg, $start, $length)
+* LEFT($arg, $num)
+* RIGHT($arg, $num)
+* DATEFORMAT($date, $format)
+* NOW()
+* ADDDATE($date, $days)
+* SUBDATE($date, $days)
+* DATE_ADD($date, $interval)
+* DATE_SUB($date, $interval)
+* DATEDIFF($date1, $date2)
+* DINSTINCT($arg) -> n'affiche pas les duplicatas
+
+##Union
+
+* IN()
+* UNION -> pas de duplicatas
+* UNION ALL -> avec duplicatas
+
+##Join
+
+![joins](http://i.stack.imgur.com/N1IGZ.jpg)
+
+* JOIN [$table] ON [options]
+* LEFT JOIN
+* RIGHT JOIN
+* FULL OUTER JOIN
 
 
